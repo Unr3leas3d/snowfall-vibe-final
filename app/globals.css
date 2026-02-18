@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ──────────────────────────────────────── */
+:root {
+  --brand-blue: #2160FF;
+  --brand-hover: #1A4FD1;
+  --near-black: #0A0A0A;
+  --body-gray: #4B5563;
+  --border-color: #E5E7EB;
+  --bg-off-white: #F9FAFB;
+
+  /* Glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: 12px;
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-neutral font-sans scroll-smooth antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight;
+  }
+
+  h1 {
+    @apply text-display-lg font-extrabold;
+  }
+
+  h2 {
+    @apply text-heading-lg font-bold;
+  }
+
+  h3 {
+    @apply text-heading font-bold;
+  }
+
+  p {
+    @apply text-neutral-body leading-relaxed;
+  }
+
+  /* Focus ring for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand;
+  }
+}
+
+/* ─── Component Utilities ────────────────────────────────────────── */
+@layer components {
+
+  /* Glass card */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Section padding - consistent vertical rhythm */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  /* Container with max-width */
+  .container-tight {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Staggered animation delays for children */
+  .stagger-children>*:nth-child(1) {
+    animation-delay: 0ms;
+  }
+
+  .stagger-children>*:nth-child(2) {
+    animation-delay: 100ms;
+  }
+
+  .stagger-children>*:nth-child(3) {
+    animation-delay: 200ms;
+  }
+
+  .stagger-children>*:nth-child(4) {
+    animation-delay: 300ms;
+  }
+
+  .stagger-children>*:nth-child(5) {
+    animation-delay: 400ms;
+  }
+
+  .stagger-children>*:nth-child(6) {
+    animation-delay: 500ms;
+  }
+}
+
+/* ─── Utility Classes ────────────────────────────────────────────── */
+@layer utilities {
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #2160FF 0%, #60A5FA 100%);
+  }
+
+  /* Blue section background */
+  .bg-brand-section {
+    @apply bg-brand text-white;
+  }
+
+  /* Smooth hover transitions */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-elevated;
+  }
+}
